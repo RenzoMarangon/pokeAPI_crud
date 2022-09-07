@@ -1,33 +1,76 @@
 const { response, request } = require('express');
+const bcryptjs = require('bcryptjs');
+const User = require('../models/user');
 
+//Obtener usuario || GET
+const userGet = async(req = request,res = response) => {
+    
+    const { desde = 0, limite = 5 } = req.query;
 
-const userGet = (req = request,res = response) => {
-    res.json({msg:'user get'})
+    //Pregunto si req.query son numeros
+    if( isNaN(desde) ||  isNaN(limite) ) return res.status(400).json({ msg: "El inicio y el límite deben ser números" })
+
+    //Busco los usuarios
+    const [ totalUsers, users ] = await Promise.all([
+        User.count({ state:true }),
+        User.find({ state:true })
+            .skip( Number( desde ))
+            .limit( Number( limite ))
+    ])
+
+    res.json({ totalUsers, users })
 }
-const userPost = (req = request,res = response) => {
+//Crear usuario || POST
+const userPost = async(req = request,res = response) => {
 
-    const id = req.query
+    const { name, password, mail,role } = req.body;
+    const user = new User( { name, password, mail,role } );    
+    
+    //Encriptar contraseña
+    const salt = bcryptjs.genSaltSync() //creo un nivel de dificultad, por defecto 10
+    user.password = bcryptjs.hashSync( password, salt )
 
-    const body = req.body;
+    //Guardar en DB
+    await user.save()
 
-    res.json({body, id})
+    res.json({ user })
 }
-const userPut = (req = request,res = response) => {
-    res.json({msg:'user put'})
+
+//Actualizar usuario || PUT
+const userPut = async(req = request,res = response) => {
+
+    const { id } = req.params;
+    //Saco lo que no quiero que se modifique
+    const { _id, password, google, ...user } = req.body;
+
+    if( password ) {
+        //encriptar la contraseña
+        const salt = bcryptjs.genSaltSync();
+        user.password = bcryptjs.hashSync( password, salt )
+    }
+
+    const userUpdated = await User.findByIdAndUpdate( id, user );
+
+    res.json( userUpdated )
 }
-const userDelete = (req = request,res = response) => {
+
+//DELETE
+const userDelete = async(req = request,res = response) => {
     const { id } = req.params;
 
-    res.json({id})
+    //Borrar fisicamentres
+    // const user = await User.findByIdAndDelete( id );
+
+    const user = await User.findByIdAndUpdate( id, { state:false } );
+
+
+    res.json( user )
 }
-const userPatch = (req = request,res = response) => {
-    res.json({msg:'user patch'})
-}
+
 
 module.exports = {
     userGet,
     userPost,
     userPut,
     userDelete,
-    userPatch,
 }

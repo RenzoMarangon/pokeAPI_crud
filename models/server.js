@@ -1,12 +1,15 @@
 require('dotenv').config();
 const cors = require('cors');
 const express = require('express');
+const { dbConnection } = require('../database/config');
 
 class Server{
     constructor(){
         this.app  = express();
         this.port = process.env.PORT;
 
+        //Conectar a MongoDB
+        this.connectDB();
 
         //Middlewares
         this.middlewares();
@@ -26,8 +29,12 @@ class Server{
 
     listen(){
         this.app.listen( this.port, () => {
-            console.log('DB online - port ' + this.port);
+            console.log('App online - port ' + this.port);
         });
+    }
+
+    async connectDB(){
+        await dbConnection();
     }
 
     middlewares(){

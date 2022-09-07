@@ -1,6 +1,5 @@
 const { response } = require('express');
 
-
 const pokemonGet = (req,res = response) => {
     res.json({msg:'pokemon get'})
 }
