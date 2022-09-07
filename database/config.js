@@ -9,7 +9,6 @@ const dbConnection = ()=>{
         });
         
     } catch (error) {
-        console.log( error );
         throw new Error('Error al levantar MongoDB');
     }
 }
