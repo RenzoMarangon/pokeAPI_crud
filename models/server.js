@@ -7,6 +7,11 @@ class Server{
     constructor(){
         this.app  = express();
         this.port = process.env.PORT;
+        this.path = {
+            pokemon : '/api/pokemon',
+            user    : '/api/user',
+            auth    : '/auth'
+        }
 
         //Conectar a MongoDB
         this.connectDB();
@@ -19,11 +24,12 @@ class Server{
 
     routes(){
 
-        this.app.use('/api/pokemon', require('../routes/pokemon'));
-        this.app.use('/api/user', require('../routes/user'));
+        this.app.use(this.path.auth, require('../routes/auth'));
+        this.app.use(this.path.pokemon, require('../routes/pokemon'));
+        this.app.use(this.path.user, require('../routes/user'));
         
         this.app.get('*', ( req , res ) => {
-            res.sendFile(__dirname+'/public/404.html');
+            res.send({ msg:"No existe esa página" });
         })
     }
 

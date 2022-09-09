@@ -35,7 +35,8 @@ const UserSchema = Schema({
 
 //MODIFICAR EL OBJETO DE MONGO
 UserSchema.methods.toJSON = function(){
-    const { __v, password, ...user } = this.toObject();
+    const { __v,password, _id, ...user } = this.toObject();
+    user.id = _id;
     return user;
 }
 
