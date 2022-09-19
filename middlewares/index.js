@@ -1,6 +1,7 @@
-const validationError = require('../middlewares/validate-errors');
-const validationJWT = require('../middlewares/validate-jwt');
-const validationRole = require('../middlewares/validate-role');
+const validationError = require('./validate-errors');
+const validationJWT = require('./validate-jwt');
+const validationRole = require('./validate-role');
+
 
 module.exports = {
     ...validationError,

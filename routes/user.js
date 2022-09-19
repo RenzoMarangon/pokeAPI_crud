@@ -11,15 +11,31 @@ const { validateRole,
         existUserID } = require('../helpers/db-validators');
 
 const { userGet,
+        usersGet,
         userDelete,
         userPost,
         userPut } = require('../controllers/index');
 
 const router = Router();
 
-router.get('/' , userGet)
+router.get('/',[
+    validateJWT, 
+    isAdmin,
+    isRole('ADMIN_ROLE'),
+    validateErrors
+] , usersGet)
+
+router.get('/:id',[
+    validateJWT, 
+    isAdmin,
+    isRole('ADMIN_ROLE'),
+    validateErrors
+] , userGet)
 
 router.post('/',[
+    validateJWT, 
+    isAdmin,
+    isRole('ADMIN_ROLE'),
     check('mail',"El email no es válido").isEmail(), //Express-validator => isEmail();
     check('name',"El nombre es obligatorio").not().isEmpty(),
     check('password',"La contraseña es obligatoria").not().isEmpty(),
@@ -30,6 +46,9 @@ router.post('/',[
 ], userPost)
 
 router.put('/:id',[
+    validateJWT, 
+    isAdmin,
+    isRole('ADMIN_ROLE'),
     check('id', 'No es un id de mongo válido').isMongoId(),
     check('id').custom( existUserID ),
     validateErrors

@@ -8,9 +8,11 @@ class Server{
         this.app  = express();
         this.port = process.env.PORT;
         this.path = {
-            pokemon : '/api/pokemon',
-            user    : '/api/user',
-            auth    : '/auth'
+            auth         : '/auth',
+            pokemon      : '/api/pokemon',
+            pokemonTypes : '/api/pokemon/type',
+            user         : '/api/user',
+            search       : '/api/search'
         }
 
         //Conectar a MongoDB
@@ -24,12 +26,14 @@ class Server{
 
     routes(){
 
-        this.app.use(this.path.auth, require('../routes/auth'));
-        this.app.use(this.path.pokemon, require('../routes/pokemon'));
-        this.app.use(this.path.user, require('../routes/user'));
+        this.app.use( this.path.auth, require('../routes/auth'));
+        this.app.use( this.path.pokemon, require('../routes/pokemon'));
+        this.app.use( this.path.pokemonTypes, require('../routes/pokeTypes'));
+        this.app.use( this.path.user, require('../routes/user'));
+        this.app.use( this.path.search, require('../routes/search'));
         
         this.app.get('*', ( req , res ) => {
-            res.send({ msg:"No existe esa página" });
+            res.status(404).send({ msg:"No existe este endpoint" });
         })
     }
 
@@ -46,7 +50,7 @@ class Server{
     middlewares(){
 
         //Proteccion superficial pero chrome o ffox pueden tirar error
-        this.app.use(cors());
+        this.app.use( cors() );
 
         //Usar formato json
         this.app.use( express.json() );
