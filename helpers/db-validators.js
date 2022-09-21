@@ -109,12 +109,25 @@ const existPokeGeneration = async( generation ) => {
     if( generation < 1 || generation > 8 ) throw new Error(`La generación: ${generation} no existe`);
 }
 
+//Verificar si existe el ID del poketype
+
 const existPokeTypeID = async( id ) => {
 
     const pokeType = await Type.findById( id, { state:false } )
 
     if( !pokeType ) throw new Error(`El ID: ${ id } no existe`);
 };
+
+//Verificar si la coleccion es permitida
+
+const collectionsAllowed = ( collection, collectionsInDB ) => {
+
+    if( !collectionsInDB.includes( collection )) throw new Error(`La collección ${collection} no es permitida`);
+
+    return true
+
+}
+
 
 module.exports = {
     validateRole,
@@ -126,5 +139,6 @@ module.exports = {
     validatePokeType,
     existPokeGeneration,
     existPokeType,
-    existPokeTypeID
+    existPokeTypeID,
+    collectionsAllowed
 }

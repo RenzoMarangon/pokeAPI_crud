@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const fileUpload = require('express-fileupload');
 const { dbConnection } = require('../database/config');
 
 class Server{
@@ -12,7 +13,8 @@ class Server{
             pokemon      : '/api/pokemon',
             pokemonTypes : '/api/pokemon/type',
             user         : '/api/user',
-            search       : '/api/search'
+            search       : '/api/search',
+            upload       : '/api/upload'
         }
 
         //Conectar a MongoDB
@@ -31,6 +33,7 @@ class Server{
         this.app.use( this.path.pokemonTypes, require('../routes/pokeTypes'));
         this.app.use( this.path.user, require('../routes/user'));
         this.app.use( this.path.search, require('../routes/search'));
+        this.app.use( this.path.upload, require('../routes/upload'));
         
         this.app.get('*', ( req , res ) => {
             res.status(404).send({ msg:"No existe este endpoint" });
@@ -57,6 +60,13 @@ class Server{
 
         //Servir contenido estático
         this.app.use( express.static('public') );
+
+        //Para poder subir archivos
+        this.app.use(fileUpload({
+            useTempFiles     : true,
+            tempFileDir      : '/tmp/',
+            createParentPath : true
+        }));
     }
 }
 
