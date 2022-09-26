@@ -40,6 +40,8 @@ const validatePokeName = async( name ) => {
 //Verificar si el ID del pokemon existe
 const existPokemonID = async( id )=>{
 
+    if (!id) return;
+
     const idExist = await Pokemon.findById( id );
     
     if( !idExist ) throw new Error(`El pokemon no existe.`);
@@ -54,7 +56,7 @@ const existNumberID = async( id ) => {
 }
 
 
-//Verificar si el tipo de pokemon existe
+//Cuando se crea un pokemon, se verifica si el tipo de pokemon existe
 const validatePokeType = async( type ) => {
 
     if(!type) return;
@@ -101,7 +103,6 @@ const existPokeType = async(name) => {
    
 
 }
-
 
 //Verificar si la generación es correcta
 const existPokeGeneration = async( generation ) => {

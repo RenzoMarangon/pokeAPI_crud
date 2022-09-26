@@ -11,6 +11,7 @@ const pokemonGet = async(req = request,res = response) => {
         Pokemon.countDocuments( query ),
         Pokemon.find( query )
             .populate('user', 'name')
+            .populate('evolution','name')
             .skip(Number( from )) 
             .limit(Number( limit ))
     ])
@@ -19,7 +20,7 @@ const pokemonGet = async(req = request,res = response) => {
 
 const pokemonPost = async(req = request ,res = response) => {
     
-    let { name, type, img, generation, numberID } = req.body;
+    let { name, type, img, generation, numberID, evolution, stats } = req.body;
 
     //Pregunto si hay un type;
     if(type){
@@ -30,14 +31,14 @@ const pokemonPost = async(req = request ,res = response) => {
         type = typeUpperCase.join(" ")
     }
 
-    const pokemon = new Pokemon({ name, type, img, generation, numberID })
+    // const pokemon = new Pokemon({ name, type, img, generation, numberID, evolution })
 
-    pokemon.user = req.user._id;
-    pokemon.name = name.toUpperCase();
+    // pokemon.user = req.user._id;
+    // pokemon.name = name.toUpperCase();
          
-    await pokemon.save();
+    // await pokemon.save();
 
-    res.json( pokemon )
+    res.json( stats )
 }
 const pokemonPut = async(req,res = response) => {
 
@@ -45,7 +46,7 @@ const pokemonPut = async(req,res = response) => {
     
     const user = req.user._id;
 
-    let { name, type, img, generation, numberID, state} = req.body;
+    let { name, type, img, generation, numberID, evolution} = req.body;
 
     //Pregunto si hay un type;
     if(type){
@@ -66,6 +67,7 @@ const pokemonPut = async(req,res = response) => {
         img,
         generation,
         numberID,
+        evolution
     }
     
     const pokemon = await Pokemon.findByIdAndUpdate( id, data, { new:true} );

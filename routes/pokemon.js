@@ -5,13 +5,14 @@ const { validateErrors,
         validateJWT, 
         isAdmin, 
         isRole,
-    } = require('../middlewares/index');
+        validateStats,
+    } = require('../middlewares');
 
 const { pokemonGet,
         pokemonDelete,
         pokemonPost,
         pokemonPut,
-    } = require('../controllers/index');
+    } = require('../controllers');
 
 const { validatePokeName, 
         existPokemonID , 
@@ -36,6 +37,8 @@ router.post('/',[
     check('type',"El tipo de pokemon es obligatorio.").not().isEmpty(),
     check('generation').custom( existPokeGeneration ),
     check('generation',"El número de generación es obligatorio.").not().isEmpty(),
+    check('evolution').custom( existPokemonID ),
+    validateStats,
     validateErrors
 ], pokemonPost)
 
@@ -49,6 +52,7 @@ router.put('/:id',[
     check('numberID').custom( existNumberID ),
     check('generation').custom( existPokeGeneration ),
     check('name').custom( validatePokeName ),
+    check('evolution').custom( existPokemonID ),
     validateErrors
 ] , pokemonPut);
 

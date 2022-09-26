@@ -33,20 +33,37 @@ const pokemonSchema = Schema({
         required:[true,'Se debee especificar la generación'],
         default:1,
     },
+    evolution:{
+            type:Schema.Types.ObjectId,
+            ref:'Pokemon'
+    },   
+    stats:{
+        attack:{
+            type:String,
+            required:[true, 'Se requiere el ataque del pókemon']
+        },
+        defense:{
+            type:String,
+            required:[true, 'Se requiere la defensa del pókemon']
+        },
+        resistance:{
+            type:String,
+            required:[true, 'Se requiere la resistencia del pókemon']
+        },
+        hp:{
+            type:String,
+            required:[true, 'Se requieren los puntos de vida del pókemon']
+        },
+    },
+    evolutionLevel:{
+        type:String
+    }
     // attacks:{
     //     type:Schema.Types.ObjectId,
     //     ref:'Attacks',
     //     default:{}
     // },
-    // stats:{
-    //     type:Schema.Types.ObjectId,
-    //     ref:'Stats',
-    //     default:{}
-    // },evolution:{
-    //     type:Schema.Types.ObjectId,
-    //     ref:'Pokemon',
-    //     default:{}
-    // },
+
 
 })
 
