@@ -31,14 +31,14 @@ const pokemonPost = async(req = request ,res = response) => {
         type = typeUpperCase.join(" ")
     }
 
-    // const pokemon = new Pokemon({ name, type, img, generation, numberID, evolution })
+    const pokemon = new Pokemon({ name, type, img, generation, numberID, evolution, stats })
 
-    // pokemon.user = req.user._id;
-    // pokemon.name = name.toUpperCase();
+    pokemon.user = req.user._id;
+    pokemon.name = name.toUpperCase();
          
-    // await pokemon.save();
+    await pokemon.save();
 
-    res.json( stats )
+    res.json( pokemon )
 }
 const pokemonPut = async(req,res = response) => {
 

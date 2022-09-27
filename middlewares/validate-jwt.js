@@ -6,7 +6,7 @@ const User = require('../models/user');
 
 const validateJWT = async( req = request, res = resolve, next) => {
     
-    const tokenHeader = req.header('poke-token');
+    const tokenHeader = req.header('poke_token');
 
     if( !tokenHeader ){
         return  res.status(401).json({ error : "No hay token en la petición"})
