@@ -40,19 +40,15 @@ const pokemonSchema = Schema({
     stats:{
         attack:{
             type:String,
-            required:[true, 'Se requiere el ataque del pókemon']
         },
         defense:{
             type:String,
-            required:[true, 'Se requiere la defensa del pókemon']
         },
         resistance:{
             type:String,
-            required:[true, 'Se requiere la resistencia del pókemon']
         },
         hp:{
             type:String,
-            required:[true, 'Se requieren los puntos de vida del pókemon']
         },
     },
     evolutionLevel:{
