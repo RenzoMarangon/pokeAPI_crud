@@ -12,6 +12,7 @@ const { pokemonGet,
         pokemonDelete,
         pokemonPost,
         pokemonPut,
+        pokemonFindOne
     } = require('../controllers');
 
 const { validatePokeName, 
@@ -24,6 +25,8 @@ const { validatePokeName,
 const router = Router();
 
 router.get('/' , pokemonGet);
+
+router.get('/:id' , pokemonFindOne);
 
 router.post('/',[
     validateJWT,

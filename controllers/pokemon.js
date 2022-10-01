@@ -84,9 +84,18 @@ const pokemonDelete = async(req,res = response) => {
 }
 
 
+const pokemonFindOne = async(req, res) => {
+    const id = req.params.id;
+
+    const pokemon = await Pokemon.findOne({ numberID:id })
+
+    res.json( pokemon )
+}
+
 module.exports = {
     pokemonGet,
     pokemonPost,
     pokemonPut,
     pokemonDelete,
+    pokemonFindOne
 }
