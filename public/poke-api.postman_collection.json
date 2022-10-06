@@ -40,7 +40,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"Ivysaur\",\r\n    \"type\":\"grass poison\",\r\n    \"numberID\":\"5\",\r\n    \"generation\":\"1\",\r\n    \"stats\":{\r\n            \"attack\":\"50\",\r\n            \"defense\":\"50\",\r\n            \"resistance\":\"50\",\r\n            \"hp\":\"5000\"\r\n    }\r\n    \r\n}",
+							"raw": "{\r\n    \"name\":\"Ivysaur\",\r\n    \"type\":\"grass poison\",\r\n    \"numberID\":\"2\",\r\n    \"generation\":\"1\",\r\n    \"stats\":{\r\n            \"attack\":\"50\",\r\n            \"defense\":\"50\",\r\n            \"resistance\":\"50\",\r\n            \"hp\":\"5000\"\r\n    }\r\n    \r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -100,7 +100,7 @@
 						"method": "DELETE",
 						"header": [
 							{
-								"key": "poke-token",
+								"key": "poke_token",
 								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMWMwODY5OTRjMDg4M2I4NjBjYjkzOSIsImlhdCI6MTY2MjgzNTA4OSwiZXhwIjoxNjYzNDM5ODg5fQ.3GWNZdpgWuIorZe-MJul1p36F3XE4Pjtyt_B9XXTw6A",
 								"type": "text"
 							}
@@ -150,6 +150,25 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "GET ONE POKEMON",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/pokemon/632a8924f2ab5a5420a91688",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"pokemon",
+								"632a8924f2ab5a5420a91688"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -165,7 +184,7 @@
 						"method": "GET",
 						"header": [
 							{
-								"key": "poke-token",
+								"key": "poke_token",
 								"value": "{{token}}",
 								"type": "text"
 							}
@@ -194,15 +213,22 @@
 				},
 				{
 					"name": "GET USER",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
 						"header": [
 							{
-								"key": "poke-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMWMwODY5OTRjMDg4M2I4NjBjYjkzOSIsImlhdCI6MTY2Mjc4MTYzNiwiZXhwIjoxNjYzMzg2NDM2fQ.Kmcm0ivAP-f10bAb_bqOEnYZJcxW75xTykFnhZB2v2k",
+								"key": "poke_token",
+								"value": "{{token}}",
 								"type": "text"
 							}
 						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "{{url}}/api/user/631c086994c0883b860cb939",
 							"host": [
@@ -224,7 +250,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"El mas cochino\",\r\n    \"password\":\"soyunacontraseña123!\",\r\n    \"mail\":\"user5@gmail.com\",\r\n    \"role\":\"ADMIN_ROLE\"\r\n}",
+							"raw": "{\r\n    \"name\":\"User\",\r\n    \"password\":\"soyunacontraseña123!\",\r\n    \"mail\":\"user5@gmail.com\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -248,7 +274,13 @@
 					"name": "PUT USER",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "poke_token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"state\":\"true\"\r\n}",
@@ -273,31 +305,13 @@
 					"response": []
 				},
 				{
-					"name": "PATCH USER",
-					"request": {
-						"method": "PATCH",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/api/user",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"user"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "DELETE USER",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
-								"key": "poke-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMWMwODY5OTRjMDg4M2I4NjBjYjkzOSIsImlhdCI6MTY2Mjc4MTYzNiwiZXhwIjoxNjYzMzg2NDM2fQ.Kmcm0ivAP-f10bAb_bqOEnYZJcxW75xTykFnhZB2v2k",
+								"key": "poke_token",
+								"value": "{{token}}",
 								"type": "text"
 							}
 						],
@@ -356,76 +370,7 @@
 						"method": "GET",
 						"header": [
 							{
-								"key": "poke-token",
-								"value": "{{token}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"type\":\"forrito\",\r\n    \"state\":\"true\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/pokemon/type/",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"pokemon",
-								"type",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create Types",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "poke-token",
-								"value": "{{token}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"garx\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/pokemon/type",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"pokemon",
-								"type"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update Types",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "poke-token",
+								"key": "poke_token",
 								"value": "{{token}}",
 								"type": "text"
 							}
@@ -440,14 +385,79 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/pokemon/type/6327a71697bbc9c8d6e9f043?",
+							"raw": "{{url}}/api/pokemonType",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"pokemon",
-								"type",
+								"pokemonType"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Types",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "poke_token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"grass\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/pokemonType",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"pokemonType"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Types",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "poke_token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/pokemonType/6327a71697bbc9c8d6e9f043?",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"pokemonType",
 								"6327a71697bbc9c8d6e9f043"
 							],
 							"query": [
@@ -469,7 +479,13 @@
 					"name": "Update Pokemon Image",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "poke_token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
