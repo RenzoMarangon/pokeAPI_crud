@@ -174,6 +174,7 @@ const getImage = async( req, res ) =>{
 }
 
 
+
 module.exports = {
     uploadImage,
     updateImage,

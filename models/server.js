@@ -11,7 +11,7 @@ class Server{
         this.path = {
             auth         : '/auth',
             pokemon      : '/api/pokemon',
-            pokemonTypes : '/api/pokemon/type',
+            pokemonTypes : '/api/pokemonType',
             user         : '/api/user',
             search       : '/api/search',
             upload       : '/api/upload'

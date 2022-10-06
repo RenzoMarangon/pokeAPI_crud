@@ -33,15 +33,11 @@ router.get('/:id',[
 ] , userGet)
 
 router.post('/',[
-    validateJWT, 
-    isAdmin,
-    isRole('ADMIN_ROLE'),
     check('mail',"El email no es válido").isEmail(), //Express-validator => isEmail();
     check('name',"El nombre es obligatorio").not().isEmpty(),
     check('password',"La contraseña es obligatoria").not().isEmpty(),
     check('password',"La contraseña debe tener al menos 6 carácteres").isLength({min:6}),
     check('mail').custom( validateEmail ), 
-    check('role').custom( validateRole ),
     validateErrors
 ], userPost)
 
@@ -62,5 +58,6 @@ router.delete('/:id',[
     check('id').custom( existUserID ),
     validateErrors
  ], userDelete)
+
 
 module.exports = router;

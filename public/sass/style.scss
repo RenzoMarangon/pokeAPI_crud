@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Reem+Kufi:wght@400;600;700&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+}
+body{
+    background-color: #FFE9B8;
+
+}
+
+.main-container{
+    max-width: 1200px;
+    margin:20vh auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "img questions";
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    padding: 4rem;
+    background-color: #fff;
+    border: solid 4px #FFE9B8;
+    box-shadow: -12px -8px 37px -23px rgba(0,0,0,0.75);
+    -webkit-box-shadow: -12px -8px 37px -23px rgba(0,0,0,0.75);
+    -moz-box-shadow: -12px -8px 37px -23px rgba(0,0,0,0.75);
+    
+    h2{
+        font-family: 'Reem Kufi', sans-serif;
+    }
+    .faq-container{
+        height: 100%;
+        h2{
+            color:#EFB535;
+            font-weight: bold;
+        }
+        .questions-container{
+            display: flex;
+            flex-direction: column;
+            align-items: left;
+            justify-content: right;
+
+     
+            .question{
+                margin-top: 1rem;
+                background-color: #F5F4F4;
+                padding: 1rem 2.5rem;
+                border-radius: .5rem;
+                position: relative;
+                cursor: pointer;
+                border:solid 1px #e4e4e4;
+                transition: ease-in-out .5s;
+
+                p,h3{
+                    font-family: 'Lato', sans-serif;
+
+                }
+                &:hover{
+                    background-color: #ebebeb;
+
+                }
+                .arrow{
+                    display: flex;
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 1rem;
+                    align-items: center;
+                    justify-content: center;
+                    border: solid 1px rgb(109, 109, 109);
+                    font-weight: bold;
+                    position: absolute;
+                    left: .9rem;
+                    top:1.1rem;
+                    opacity:.6;
+                }
+                
+                .p{
+                    height: 0;
+                    overflow: hidden;
+                    transition: ease-in-out .5s;
+
+                    .link{
+                        text-decoration: none;
+                        font-size: 1.1rem;
+                    }
+                    p{
+                        padding: .2rem;
+                        margin-bottom: .5rem;
+                    }
+                    .pokemons{
+                        border-radius: .5rem;
+                        border-left: solid 4px #FFE9B8 ;
+                        background-color: white;
+                        padding: .5rem;
+                        p{
+                            .link{
+                                margin:.5rem;
+                                background-color: rgba(173, 216, 230, 0.192);
+                                padding: .2rem;
+                                border-radius: .5rem;
+                            }
+                            .admin{
+                                background-color: red;
+                                color:#fff;
+                                padding: .2rem;
+                                border-radius: .4rem;
+                                font-size: .6rem;
+                            }
+                        }
+                    }
+                    
+   
+
+
+                }
+            }
+
+               
+            .cursorx{
+                cursor:context-menu ;
+                h3{
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+

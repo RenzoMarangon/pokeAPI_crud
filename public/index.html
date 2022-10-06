@@ -5,12 +5,73 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Poke Api</title>
+    <link rel="stylesheet" href="./css/style.min.css">
 </head>
 <body>
-    <h1>Poke api</h1>
+    <main>
+        <div class="main-container">
+            <div class="faq-img">
+                <img src="./psyduck.jpg" alt="Psyduck">
+            </div>
 
-    <script>
+            <div class="faq-container">
+                <h2 class="title">
+                    Preguntas frecuentes
+                </h2>
 
-    </script>
+                <div class="questions-container">
+                    <div class="question">
+                        <div class="arrow">+</div>
+                        <h3>¿Qué es Poke-API?</h3>
+                        <div class="p">
+                            Poke-API es una base de datos con información acerca de los diferentes tipos de Pókemon. 
+                        </div>
+                    </div>
+                    <div class="question cursorx">
+                        <div class="arrow">+</div>
+                        <h3>¿Cómo obtengo información acerca de los pókemons?</h3>
+                        <div class="p">
+                                <p>Se puede acceder a través de los siguientes endpoints:</p>
+                                <div class="pokemons">
+                                    <p>*Obtener colección de pókemons (GET):<br> <span class="link">https://poke-apix.herokuapp.com/api/pokemon</span></p>
+                                    <p>*Obtener colección de un pókemon especifico (GET):<br> <span class="link">https://poke-apix.herokuapp.com/api/pokemon/:id</span></p>
+                                    <p>*Buscar pókemons (GET): <br><span class="link">https://poke-apix.herokuapp.com/api/search/pokemons/:abc</span></p>
+                                    <p>*Crear un nuevo pókemon (POST): <span class="admin">Requiere admin</span><br> <span class="link">https://poke-apix.herokuapp.com/api/pokemon/</span></p>
+                                    <p>*Actualizar pókemon (PUT): <span class="admin">Requiere admin</span><br> <span class="link">https://poke-apix.herokuapp.com/api/pokemon/:id</span></p>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="question cursorx">
+                        <div class="arrow">+</div>
+                        <h3>¿Cómo accedo como admin?</h3>
+                        <div class="p">
+                            <p>El siguiente endpoint devuelve un JWT, para luego enviar un header con la key: <i>poke_token</i> y el JWT como value</p>
+                            <div class="pokemons">
+                                <p>*Obtener JWT de admin (POST):<br> <span class="link">https://poke-apix.herokuapp.com/auth/login</span></p>
+                                <p>*El body deberá ser enviado como JSON y tendrá que tener el siguiente formato:<br>
+                                    <span class="link">
+                                        {<br> mail:user1@gmail.com <br>
+                                    password:soyunacontraseña123! <br>}
+                                    </span>
+                                </p>
+                            </div>
+                    </div>
+                    </div>
+
+                    <div class="question">
+                        <div class="arrow">+</div>
+                        <h3>¿Dónde puedo acceder a más contenido?</h3>
+                        <div class="p">
+                           <p> Para ver el resto de endpoints, deberás importar en postman el siguiente archivo:</p> <br>
+                           <a class="link" target="_BLANK" href="http://localhost:8080/api/upload/download">Descargar Postman.json</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="./script/index.js"></script>
 </body>
 </html>

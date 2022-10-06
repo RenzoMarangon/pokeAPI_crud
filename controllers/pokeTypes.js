@@ -39,7 +39,7 @@ const pokeTypesPut = async( req = request, res = response ) => {
 
     const { id } = req.params;
 
-    let { _id, name, state } = req.body;
+    let { name, state } = req.body;
 
     //Si el argumento "name" existe lo paso a mayusculas
     name && (name = name.toUpperCase()) ;

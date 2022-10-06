@@ -31,7 +31,8 @@ const existUserID = async( id )=>{
 //Verificar si existe el pokemon
 const validatePokeName = async( name ) => {
 
-    const pokemonExist = await Pokemon.findOne({ name })
+    const nameToUppercase = name.toUpperCase()
+    const pokemonExist = await Pokemon.findOne({ name:nameToUppercase })
 
     if( pokemonExist ) throw new Error(` ${ name } ya existe.`);
 

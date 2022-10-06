@@ -92,10 +92,12 @@ const pokemonFindOne = async(req, res) => {
     res.json( pokemon )
 }
 
+
+
 module.exports = {
     pokemonGet,
     pokemonPost,
     pokemonPut,
     pokemonDelete,
-    pokemonFindOne
+    pokemonFindOne,
 }

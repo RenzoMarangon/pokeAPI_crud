@@ -1,0 +1,521 @@
+{
+	"info": {
+		"_postman_id": "0c8d9fd5-6df6-4c52-a5cc-c9efc37eaeb7",
+		"name": "poke-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22350881"
+	},
+	"item": [
+		{
+			"name": "Pokemon",
+			"item": [
+				{
+					"name": "GET POKEMON",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/pokemon",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"pokemon"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST POKEMON",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "poke_token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Ivysaur\",\r\n    \"type\":\"grass poison\",\r\n    \"numberID\":\"5\",\r\n    \"generation\":\"1\",\r\n    \"stats\":{\r\n            \"attack\":\"50\",\r\n            \"defense\":\"50\",\r\n            \"resistance\":\"50\",\r\n            \"hp\":\"5000\"\r\n    }\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/pokemon",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"pokemon"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT POKEMON",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "poke_token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\":\"grass fire\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/pokemon/632a8924f2ab5a5420a91688",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"pokemon",
+								"632a8924f2ab5a5420a91688"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE POKEMON",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "poke-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMWMwODY5OTRjMDg4M2I4NjBjYjkzOSIsImlhdCI6MTY2MjgzNTA4OSwiZXhwIjoxNjYzNDM5ODg5fQ.3GWNZdpgWuIorZe-MJul1p36F3XE4Pjtyt_B9XXTw6A",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/pokemon/631cec06982bba7f34d68a1c",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"pokemon",
+								"631cec06982bba7f34d68a1c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SEARCH POKEMONS",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/search/pokemons/b",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"search",
+								"pokemons",
+								"b"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "GET USERS",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "poke-token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET USER",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "poke-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMWMwODY5OTRjMDg4M2I4NjBjYjkzOSIsImlhdCI6MTY2Mjc4MTYzNiwiZXhwIjoxNjYzMzg2NDM2fQ.Kmcm0ivAP-f10bAb_bqOEnYZJcxW75xTykFnhZB2v2k",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/user/631c086994c0883b860cb939",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"631c086994c0883b860cb939"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST USER",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"El mas cochino\",\r\n    \"password\":\"soyunacontraseña123!\",\r\n    \"mail\":\"user5@gmail.com\",\r\n    \"role\":\"ADMIN_ROLE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT USER",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"state\":\"true\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/user/631c0904564571a63b01f157",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"631c0904564571a63b01f157"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH USER",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE USER",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "poke-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMWMwODY5OTRjMDg4M2I4NjBjYjkzOSIsImlhdCI6MTY2Mjc4MTYzNiwiZXhwIjoxNjYzMzg2NDM2fQ.Kmcm0ivAP-f10bAb_bqOEnYZJcxW75xTykFnhZB2v2k",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/user/631c0904564571a63b01f157",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"631c0904564571a63b01f157"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Autentificacion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mail\":\"user1@gmail.com\",\r\n    \"password\":\"soyunacontraseña123!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/auth/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PokeTypes",
+			"item": [
+				{
+					"name": "Get Types",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "poke-token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\":\"forrito\",\r\n    \"state\":\"true\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/pokemon/type/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"pokemon",
+								"type",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Types",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "poke-token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"garx\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/pokemon/type",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"pokemon",
+								"type"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Types",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "poke-token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/pokemon/type/6327a71697bbc9c8d6e9f043?",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"pokemon",
+								"type",
+								"6327a71697bbc9c8d6e9f043"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Images",
+			"item": [
+				{
+					"name": "Update Pokemon Image",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "archive",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/upload/pokemons/632a8924f2ab5a5420a91688",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"upload",
+								"pokemons",
+								"632a8924f2ab5a5420a91688"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
