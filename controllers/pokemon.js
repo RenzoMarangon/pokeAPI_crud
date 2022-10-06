@@ -87,7 +87,7 @@ const pokemonDelete = async(req,res = response) => {
 const pokemonFindOne = async(req, res) => {
     const id = req.params.id;
 
-    const pokemon = await Pokemon.findOne({ numberID:id })
+    const pokemon = await Pokemon.findOne( {id} )
 
     res.json( pokemon )
 }
