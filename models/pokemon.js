@@ -3,15 +3,15 @@ const { Schema, model } = require('mongoose');
 const pokemonSchema = Schema({
     name:{
         type:String,
-        required:[true, 'El nombre es obligatorio'],
+        required:[true, 'El nombre es obligatorio.'],
     },
     numberID:{
         type:String,
-        required:[true,'Se debe especificar el número de pókemon'],
+        required:[true,'Se debe especificar el número de pókemon.'],
     },
     type:{
         type:String,
-        required:[true, 'Se requiere al menos un tipo de pókemon']
+        required:[true, 'Se requiere al menos un tipo de pókemon.']
         //Si es más de un tipo, hay que separarlo con un espacio
     },
     state:{
@@ -29,7 +29,7 @@ const pokemonSchema = Schema({
     },
     generation:{
         type:String,
-        required:[true,'Se debee especificar la generación'],
+        required:[true,'Se debe especificar la generación.'],
         default:1,
     },
     evolution:{
@@ -37,21 +37,33 @@ const pokemonSchema = Schema({
             ref:'Pokemon'
     },   
     stats:{
+        type:Object,
+        required:[true,'Se deben especificar las estadísticas.'],
         attack:{
-            type:String,
+            type:Number,
         },
         defense:{
-            type:String,
+            type:Number,
         },
-        resistance:{
-            type:String,
+        special_attk:{
+            type:Number,
+        },
+        special_defense:{
+            type:Number,
+        },
+        velocity:{
+            type:Number,
         },
         hp:{
-            type:String,
+            type:Number,
+        },
+        total:{
+            type:Number,
+            default:0
         },
     },
     evolutionLevel:{
-        type:String
+        type:Number
     }
     // attacks:{
     //     type:Schema.Types.ObjectId,
