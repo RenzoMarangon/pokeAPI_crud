@@ -15,7 +15,18 @@ const pokemonGet = async(req = request,res = response) => {
             .skip(Number( from )) 
             .limit(Number( limit ))
     ])
-    res.json({total, pokemons})
+
+    const sortPokemons = pokemons.sort((a,b)=>{
+        if( a.numberID > b.numberID ){
+            return 1;
+        }else if( a.numberID < b.numberID ){
+            return -1;
+        }else{
+            return 0;
+        }
+    })
+
+    res.json({total, pokemons:sortPokemons})
 }
 
 const pokemonPost = async(req = request ,res = response) => {
