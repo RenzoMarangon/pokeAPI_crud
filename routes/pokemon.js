@@ -26,7 +26,11 @@ const router = Router();
 
 router.get('/' , pokemonGet);
 
-router.get('/:id' , pokemonFindOne);
+router.get('/:id' ,[
+    check('id', 'No es un id de mongo válido').isMongoId(),
+    validateErrors
+
+], pokemonFindOne);
 
 
 
