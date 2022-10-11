@@ -41,8 +41,13 @@ const validatePokeName = async( name ) => {
 //Verificar si el ID del pokemon existe
 const existPokemonID = async( id )=>{
 
-    if(typeof(id)==''){
-        throw new Error('El ID de la evolución no puede ser vacío. Si el pókemon no tiene evolución, por favor borre esta propiedad.')
+    console.log(id)
+
+    if(id=='') return true;
+
+    if(typeof(id)=='undefined'){
+        // throw new Error('El ID de la evolución no puede ser vacío. Si el pókemon no tiene evolución, por favor borre esta propiedad.')
+        return true;
     }
 
     const idExist = await Pokemon.findById( id );

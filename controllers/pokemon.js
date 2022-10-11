@@ -17,9 +17,9 @@ const pokemonGet = async(req = request,res = response) => {
     ])
 
     const sortPokemons = pokemons.sort((a,b)=>{
-        if( a.numberID > b.numberID ){
+        if( Number(a.numberID) > Number(b.numberID) ){
             return 1;
-        }else if( a.numberID < b.numberID ){
+        }else if( Number(a.numberID) < Number(b.numberID) ){
             return -1;
         }else{
             return 0;
