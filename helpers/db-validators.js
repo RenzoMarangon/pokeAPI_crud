@@ -48,9 +48,9 @@ const existPokemonID = async( id )=>{
         return true;
     }
 
-    // const idExist = await Pokemon.findById( id );
+    const idExist = await Pokemon.findById( id );
     
-    // if( !idExist ) throw new Error(`El pokemon no existe.`);
+    if( !idExist ) throw new Error(`El pokemon no existe.`);
 }
 
 //Verificar si el numberID de un pokemon existe

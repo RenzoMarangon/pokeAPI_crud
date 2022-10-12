@@ -126,7 +126,6 @@ const updateImageCloudinary = async(req, res) => {
   model.img = secure_url;
 
   await model.save();
-
   res.json( model );
 }
 

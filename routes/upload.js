@@ -22,7 +22,6 @@ router.post('/',validateFileToUpload, uploadImageCloudinary );
 
 router.put('/:collection/:id',[
     validateJWT,
-
     validateFileToUpload,
     check('id', 'El ID debe ser de mongo').isMongoId(),
     check('collection').custom( c => collectionsAllowed( c, [ 'users','pokemons' ])),
