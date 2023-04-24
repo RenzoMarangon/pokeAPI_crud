@@ -53,7 +53,9 @@ class Server{
     middlewares(){
 
         //Proteccion superficial pero chrome o ffox pueden tirar error
-        this.app.use( cors() );
+        this.app.use(cors({
+            origin: '*'
+          }));
 
         //Usar formato json
         this.app.use( express.json() );
