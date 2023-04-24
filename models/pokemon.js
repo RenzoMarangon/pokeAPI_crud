@@ -34,7 +34,8 @@ const pokemonSchema = Schema({
     },
     evolution:{
             type:Schema.Types.ObjectId,
-            ref:'Pokemon'
+            ref:'Pokemon',
+            
     },   
     stats:{
         type:Object,
